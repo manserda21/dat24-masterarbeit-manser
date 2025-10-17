@@ -1,0 +1,10 @@
+[project]
+name = "code"
+version = "0.1.0"
+description = "Master Thesis of Manser Daniel of the 'Data Science and Artificial Intelligence' course "
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=7.0.1",
+    "soccernet>=0.1.62",
+]
