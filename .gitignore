@@ -9,5 +9,12 @@ wheels/
 # Virtual environments
 .venv
 
+# Daten & Videos
+data/
 *.mkv
-data/soccernet/
+
+# Images
+images/
+
+# Überlegungen
+Ueberlegungen/
