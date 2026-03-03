@@ -12,3 +12,9 @@ wheels/
 # Daten & Videos
 data/
 *.mkv
+
+# Images
+images/
+
+# Überlegungen
+Ueberlegungen/
