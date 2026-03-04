@@ -9,6 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
+# Passwords
+.env
+
 # Daten & Videos
 data/
 *.mkv

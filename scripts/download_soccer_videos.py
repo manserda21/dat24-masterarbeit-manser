@@ -2,9 +2,13 @@ import SoccerNet
 from SoccerNet.Downloader import SoccerNetDownloader
 from SoccerNet.utils import getListGames
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 mySoccerNetDownloader=SoccerNetDownloader(LocalDirectory="./data/soccernet")
 
-mySoccerNetDownloader.password = "s0cc3rn3t"
+mySoccerNetDownloader.password = os.getenv("SOCCERNET_PASSWORD")
 
 # Hole Listen der Spiele per Split
 splits = ["train", "valid", "test", "challenge"]
