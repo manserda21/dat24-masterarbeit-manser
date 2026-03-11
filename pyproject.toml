@@ -5,6 +5,7 @@ description = "Master Thesis of Manser Daniel of the 'Data Science and Artificia
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "dotenv>=0.9.9",
     "ipykernel>=7.0.1",
     "soccernet>=0.1.62",
 ]
