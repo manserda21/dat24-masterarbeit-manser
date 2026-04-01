@@ -1,4 +1,4 @@
-## Methoden zur Spieleridentifikation (Kurzüberblick)
+## Methoden zur Spieleridentifikation
 
 ### Methode 1: Direktes YOLO auf Spieler
 Bild -> YOLO -> Spielername (z.B. Modric)
@@ -10,7 +10,6 @@ Jeder Spieler ist eine eigene Klasse im YOLO-Modell
 - Sehr viele Trainingsdaten nötig
 - Spieler sehen visuell sehr ähnlich aus (gleiche Trikots)
 - Unrobust bei schlechter Bildqualität, Distanz oder Verdeckung
-
 
 ---
 
@@ -35,7 +34,7 @@ Bild -> YOLO -> Crop -> Team -> Nummer -> Spielername
 Problem wird in mehrere einfachere Schritte zerlegt:
 1. Team erkennen (z.B. Real Madrid vs Gegner)
 2. Trikotnummer erkennen
-3. Nummer mit Aufstellung (Lineup) mappen → Spielername
+3. Nummer mit Aufstellung (Lineup) mappen -> Spielername
 
 **Vorteil:**
 - Deutlich robuster und realistischer
