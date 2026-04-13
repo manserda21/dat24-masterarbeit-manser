@@ -23,3 +23,9 @@ images/
 
 # Überlegungen
 Ueberlegungen/
+
+# Modelle
+*.pt
+
+# YOLO-Outputs
+runs/
