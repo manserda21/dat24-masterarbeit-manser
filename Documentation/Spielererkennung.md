@@ -1,3 +1,6 @@
+- Wenige bereits annotierten Datensätze (nur Nummer statt Name)
+- aber wenig
+
 ## Methoden zur Spieleridentifikation
 
 ### Methode 1: Direktes YOLO auf Spieler
@@ -40,6 +43,12 @@ Problem wird in mehrere einfachere Schritte zerlegt:
 - Deutlich robuster und realistischer
 - Weniger Trainingsdaten nötig
 - Gut geeignet für Broadcast-Fußball
+
+Crop
+-> Team-Klassifikator
+-> wenn Real Madrid:
+   -> Nummern-Klassifikator
+   -> Nummer + Aufstellung = Spielername
 
 
 ---
