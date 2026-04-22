@@ -24,8 +24,19 @@ images/
 # Überlegungen
 Ueberlegungen/
 
+# Documentation
+Documentation/
+
 # Modelle
 *.pt
 
 # YOLO-Outputs
 runs/
+
+# Soccer Videos
+scripts/watch_soccer_clip.ipynb
+scripts/yolo_tracking/yolo_tracking_v1.ipynb
+
+# Codex
+.codex
+
