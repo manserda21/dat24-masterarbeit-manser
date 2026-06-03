@@ -16,6 +16,7 @@ dependencies = [
     "torchaudio>=2.6.0",
     "pandas>=3.0.2",
     "mpv>=1.0.8",
+    "tree>=0.2.4",
 ]
 
 [[tool.uv.index]]

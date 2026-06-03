@@ -40,3 +40,5 @@ scripts/yolo_tracking/yolo_tracking_v1.ipynb
 # Codex
 .codex
 
+# Jupyter Notebooks
+*.ipynb

@@ -1,3 +1,5 @@
+# run_tracking.py
+
 from ultralytics import YOLO
 import argparse
 from pathlib import Path
@@ -25,10 +27,15 @@ def run_tracking(
         conf=conf,
         iou=iou,
         tracker=tracker,
+        imgsz=1280,
         save=save,
+        save_txt=True,
+        save_conf=True,
         project=project,
         name=output_name,
         exist_ok=True,
+        persist=True,
+        verbose=True,
     )
 
     return results
