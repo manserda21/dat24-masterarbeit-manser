@@ -45,7 +45,8 @@ def run_predictions(
     model.predict(
         source=str(source_dir),
         conf=conf,
-        save=False,
+        iou=0.6,
+        save=True,
         save_txt=True,
         save_conf=False,
         agnostic_nms=True,
