@@ -54,6 +54,27 @@ def parse_arguments():
         help="Minimum possession duration"
     )
 
+    parser.add_argument(
+        "--player_classes",
+        type=str,
+        default=None,
+        help="Comma-separated player class names. Defaults to all classes except ball and opponents."
+    )
+
+    parser.add_argument(
+        "--ball_class",
+        type=str,
+        default="ball",
+        help="Class name of the ball"
+    )
+
+    parser.add_argument(
+        "--opponent_class",
+        type=str,
+        default="opponents",
+        help="Class name used for opponent players"
+    )
+
     return parser.parse_args()
 
 
@@ -67,6 +88,27 @@ def euclidean_distance(x1, y1, x2, y2):
         (x1 - x2) ** 2 +
         (y1 - y2) ** 2
     )
+
+
+def parse_player_classes(value):
+    if value is None:
+        return None
+
+    return {
+        class_name.strip()
+        for class_name in value.split(",")
+        if class_name.strip()
+    }
+
+
+def infer_player_classes(df, ball_class, opponent_class):
+    ignored_classes = {ball_class, opponent_class}
+
+    return {
+        class_name
+        for class_name in df["class_name"].dropna().unique()
+        if class_name not in ignored_classes
+    }
 
 
 # =========================================================
@@ -105,14 +147,25 @@ def main():
     # SPLIT PLAYERS / BALL
     # -----------------------------------------------------
 
-    player_df = df[
-        df["class_name"].isin(
-            ["modric", "kroos"]
+    player_classes = parse_player_classes(args.player_classes)
+
+    if player_classes is None:
+        player_classes = infer_player_classes(
+            df,
+            ball_class=args.ball_class,
+            opponent_class=args.opponent_class,
         )
+
+    print("\nPlayer classes:")
+    for class_name in sorted(player_classes):
+        print(f"  {class_name}")
+
+    player_df = df[
+        df["class_name"].isin(player_classes)
     ].copy()
 
     ball_df = df[
-        df["class_name"] == "ball"
+        df["class_name"] == args.ball_class
     ].copy()
     
     ball_df = (
