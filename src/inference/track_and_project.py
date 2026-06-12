@@ -1,6 +1,7 @@
 # track_and_project.py
 
 import argparse
+import hashlib
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -15,19 +16,10 @@ PITCH_WIDTH = 105
 PITCH_HEIGHT = 68
 SCALE = 10
 
-CLASS_NAMES = {
-    0: "modric",
-    1: "ball",
-    2: "kroos",
-}
-
-CLASS_COLORS = {
-    "modric": (0, 0, 255),
+DEFAULT_CLASS_COLORS = {
     "ball": (255, 255, 255),
-    "kroos": (255, 215, 0),
+    "opponent": (160, 160, 160),
 }
-
-PLAYER_CLASSES = {"modric", "kroos"}
 
 MIN_TRACK_LENGTH = 20
 MAX_PLAYER_MOVE_DISTANCE = 80
@@ -48,6 +40,8 @@ def parse_arguments():
     parser.add_argument("--conf", type=float, default=0.35)
     parser.add_argument("--tracker", type=str, default="bytetrack.yaml")
     parser.add_argument("--imgsz", type=int, default=1280)
+    parser.add_argument("--ball_class", type=str, default="ball")
+    parser.add_argument("--opponent_class", type=str, default="opponent")
 
     parser.add_argument("--min_track_length", type=int, default=MIN_TRACK_LENGTH)
     parser.add_argument("--max_player_move", type=float, default=MAX_PLAYER_MOVE_DISTANCE)
@@ -55,6 +49,38 @@ def parse_arguments():
     parser.add_argument("--ball_min_conf", type=float, default=BALL_MIN_CONF)
 
     return parser.parse_args()
+
+
+def get_model_class_names(model):
+    names = model.names
+
+    if isinstance(names, dict):
+        return {int(class_id): class_name for class_id, class_name in names.items()}
+
+    return {class_id: class_name for class_id, class_name in enumerate(names)}
+
+
+def get_player_classes(class_names, ball_class, opponent_class):
+    ignored_classes = {ball_class, opponent_class}
+
+    return {
+        class_name
+        for class_name in class_names.values()
+        if class_name not in ignored_classes
+    }
+
+
+def get_class_color(class_name):
+    if class_name in DEFAULT_CLASS_COLORS:
+        return DEFAULT_CLASS_COLORS[class_name]
+
+    digest = hashlib.md5(class_name.encode("utf-8")).digest()
+
+    return (
+        60 + digest[0] % 180,
+        60 + digest[1] % 180,
+        60 + digest[2] % 180,
+    )
 
 
 def extract_frame_number(frame_name):
@@ -187,12 +213,11 @@ def draw_trajectory(pitch, points, color, thickness=2):
         )
 
 
-def draw_legend(pitch):
+def draw_legend(pitch, class_names):
 
     legend_items = [
-        ("modric", CLASS_COLORS["modric"]),
-        ("kroos", CLASS_COLORS["kroos"]),
-        ("ball", CLASS_COLORS["ball"]),
+        (class_name, get_class_color(class_name))
+        for class_name in sorted(set(class_names.values()))
     ]
 
     start_x = 20
@@ -222,10 +247,10 @@ def draw_legend(pitch):
             2
         )
 
-def select_longest_track_per_player_class(trajectories, track_metadata):
+def select_longest_track_per_player_class(trajectories, track_metadata, player_classes):
     selected_keys = set()
 
-    for class_name in PLAYER_CLASSES:
+    for class_name in player_classes:
         candidate_keys = [
             key
             for key, metadata in track_metadata.items()
@@ -265,7 +290,7 @@ def draw_tracks(
             continue
 
         class_name = metadata["class_name"]
-        color = CLASS_COLORS.get(class_name, (255, 255, 255))
+        color = get_class_color(class_name)
         thickness = 1 if class_name == "ball" else 2
 
         draw_trajectory(
@@ -295,6 +320,7 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     output_video_path = output_dir / "bev_tracking.mp4"
+    tracking_video_path = output_dir / "tracking_video.mp4"
     output_csv_path = output_dir / "tracking_results.csv"
     output_filtered_csv_path = output_dir / "tracking_results_filtered.csv"
     output_image_path = output_dir / "final_trajectories.png"
@@ -313,6 +339,21 @@ def main():
     print(f"Image size:  {args.imgsz}")
 
     model = YOLO(args.model)
+    class_names = get_model_class_names(model)
+    player_classes = get_player_classes(
+        class_names,
+        ball_class=args.ball_class,
+        opponent_class=args.opponent_class,
+    )
+
+    print("\nModel classes:")
+    for class_id, class_name in sorted(class_names.items()):
+        print(f"  {class_id}: {class_name}")
+
+    print("\nPlayer classes used for selected trajectories:")
+    for class_name in sorted(player_classes):
+        print(f"  {class_name}")
+
     homographies = load_homographies(args.homography)
 
     print(f"\nLoaded homographies: {len(homographies)}")
@@ -324,6 +365,9 @@ def main():
 
     fps = cap.get(cv2.CAP_PROP_FPS)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    
+    video_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    video_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     print(f"FPS:          {fps}")
     print(f"Frame count:  {frame_count}")
@@ -338,6 +382,13 @@ def main():
         fourcc,
         fps,
         (bev_width, bev_height),
+    )
+    
+    tracking_writer = cv2.VideoWriter(
+        str(tracking_video_path),
+        fourcc,
+        fps,
+        (video_width, video_height),
     )
 
     rows = []
@@ -359,26 +410,30 @@ def main():
         results = model.track(
             frame_bgr,
             conf=args.conf,
+            iou=0.6,
             persist=True,
             verbose=False,
             tracker=args.tracker,
             imgsz=args.imgsz,
+            agnostic_nms=True,
         )
 
         result = results[0]
         pitch = create_pitch()
+        
+        tracking_frame = frame_bgr.copy()
 
         if result.boxes is not None:
             for box in result.boxes:
                 cls_id = int(box.cls[0])
 
-                if cls_id not in CLASS_NAMES:
+                if cls_id not in class_names:
                     continue
 
-                class_name = CLASS_NAMES[cls_id]
+                class_name = class_names[cls_id]
                 confidence = float(box.conf[0])
 
-                if class_name == "ball" and confidence < args.ball_min_conf:
+                if class_name == args.ball_class and confidence < args.ball_min_conf:
                     continue
 
                 if box.id is None:
@@ -388,6 +443,26 @@ def main():
                 track_key = f"{class_name}_{track_id}"
 
                 x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+                
+                color = get_class_color(class_name)
+
+                cv2.rectangle(
+                    tracking_frame,
+                    (int(x1), int(y1)),
+                    (int(x2), int(y2)),
+                    color,
+                    2,
+                )
+                
+                cv2.putText(
+                    tracking_frame,
+                    f"{track_key} {confidence:.2f}",
+                    (int(x1), int(y1) - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5,
+                    color,
+                    2,
+                )
 
                 image_x = (x1 + x2) / 2
                 image_y = y2
@@ -469,8 +544,9 @@ def main():
             1,
         )
         
-        draw_legend(pitch)
-
+        draw_legend(pitch, class_names)
+        
+        tracking_writer.write(tracking_frame)
         writer.write(pitch)
 
         frame_idx += 1
@@ -480,6 +556,7 @@ def main():
 
     cap.release()
     writer.release()
+    tracking_writer.release()
 
     df = pd.DataFrame(rows)
     df.to_csv(output_csv_path, index=False)
@@ -501,6 +578,7 @@ def main():
     selected_player_keys = select_longest_track_per_player_class(
         trajectories,
         track_metadata,
+        player_classes,
     )
 
     selected_pitch = create_pitch()
@@ -519,6 +597,7 @@ def main():
     print("DONE")
     print("==============================")
     print(f"Saved video:        {output_video_path}")
+    print(f"Saved tracking video: {tracking_video_path}")
     print(f"Saved CSV:          {output_csv_path}")
     print(f"Saved filtered CSV: {output_filtered_csv_path}")
     print(f"Saved image:        {output_image_path}")
