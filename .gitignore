@@ -40,5 +40,8 @@ scripts/yolo_tracking/yolo_tracking_v1.ipynb
 # Codex
 .codex
 
+# Externe Repos (eigenständig, nicht Teil dieser Masterarbeit)
+PnLCalib/
+
 # Jupyter Notebooks
 *.ipynb
