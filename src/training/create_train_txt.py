@@ -33,7 +33,7 @@ def create_train_txt(
         for image_path in image_files:
 
             f.write(
-                f"images/train/{image_path.name}\n"
+                f"data/images/train/{image_path.name}\n"
             )
 
     print("\n==============================")
