@@ -11,7 +11,7 @@ new_track_thresh: 0.55
 track_buffer: 90
 
 # Matching
-match_thresh: 0.85
+match_thresh: 0.80
 fuse_score: True
 
 # Camera motion compensation
@@ -20,5 +20,5 @@ gmc_method: sparseOptFlow
 # ReID
 with_reid: True
 model: auto
-proximity_thresh: 0.5
-appearance_thresh: 0.75
+proximity_thresh: 0.4
+appearance_thresh: 0.85
