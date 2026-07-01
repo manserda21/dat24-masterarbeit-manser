@@ -1,9 +1,13 @@
-# run_tracking.py
-
 from ultralytics import YOLO
 import argparse
 from pathlib import Path
+import cv2
+
 from config import RUNS_DIR
+
+from src.tracking.tracking_exporter import (
+    export_tracking_to_parquet,
+)
 
 
 def run_tracking(
@@ -41,32 +45,96 @@ def run_tracking(
     return results
 
 
+def get_video_fps(
+    video_path: str,
+) -> float:
+    """
+    Read FPS from video.
+    """
+
+    cap = cv2.VideoCapture(video_path)
+
+    if not cap.isOpened():
+        raise RuntimeError(
+            f"Could not open video: {video_path}"
+        )
+
+    fps = cap.get(cv2.CAP_PROP_FPS)
+
+    cap.release()
+
+    return float(fps)
+
+
 def parse_args():
+
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--model", type=str, required=True, help="Pfad zu .pt Modell")
-    parser.add_argument("--source", type=str, required=True, help="Video Pfad")
-    parser.add_argument("--name", type=str, required=True, help="Output Ordner Name")
-    parser.add_argument("--project", type=str, default=RUNS_DIR)
-    
+    parser.add_argument(
+        "--model",
+        type=str,
+        required=True,
+        help="Pfad zu .pt Modell",
+    )
 
-    parser.add_argument("--conf", type=float, default=0.25)
-    parser.add_argument("--iou", type=float, default=0.5)
-    parser.add_argument("--tracker", type=str, default="bytetrack.yaml")
+    parser.add_argument(
+        "--source",
+        type=str,
+        required=True,
+        help="Video Pfad",
+    )
+
+    parser.add_argument(
+        "--name",
+        type=str,
+        required=True,
+        help="Output Ordner Name",
+    )
+
+    parser.add_argument(
+        "--project",
+        type=str,
+        default=RUNS_DIR,
+    )
+
+    parser.add_argument(
+        "--conf",
+        type=float,
+        default=0.25,
+    )
+
+    parser.add_argument(
+        "--iou",
+        type=float,
+        default=0.5,
+    )
+
+    parser.add_argument(
+        "--tracker",
+        type=str,
+        default="bytetrack.yaml",
+    )
 
     return parser.parse_args()
 
 
 def main():
+
     args = parse_args()
 
     print("=== Tracking Start ===")
-    print(f"Model:  {args.model}")
-    print(f"Source: {args.source}")
-    print(f"Output: {args.name}")
+    print(f"Model:   {args.model}")
+    print(f"Source:  {args.source}")
+    print(f"Output:  {args.name}")
     print(f"Project: {args.project}")
 
-    run_tracking(
+    fps = get_video_fps(
+        args.source
+    )
+
+    print(f"FPS: {fps}")
+
+    results = run_tracking(
         model_path=args.model,
         source=args.source,
         output_name=args.name,
@@ -74,6 +142,18 @@ def main():
         iou=args.iou,
         tracker=args.tracker,
         project=args.project,
+    )
+
+    parquet_path = (
+        Path(args.project)
+        / args.name
+        / "tracking.parquet"
+    )
+
+    export_tracking_to_parquet(
+        results=results,
+        output_path=str(parquet_path),
+        fps=fps,
     )
 
     print("=== Tracking Done ===")
