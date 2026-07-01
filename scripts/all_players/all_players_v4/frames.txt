@@ -1,0 +1,428 @@
+## 1. Half Time V2
+
+0 frame_000000.png
+1 frame_000050.png
+2 frame_000100.png
+3 frame_000150.png
+4 frame_000200.png
+5 frame_000250.png
+6 frame_000300.png
+7 frame_000350.png
+8 frame_000400.png
+9 frame_000450.png (10) 
+10 frame_000500.png
+11 frame_000550.png (Nahaufnahme Benzema)
+12 frame_000600.png
+13 frame_000650.png
+14 frame_000700.png
+15 frame_000750.png
+16 frame_000800.png
+17 frame_000850.png
+18 frame_000900.png
+19 frame_000950.png (20)
+20 frame_001000.png
+22 frame_001100.png
+23 frame_001150.png
+24 frame_001200.png (Nahaufnahme Modric)
+25 frame_001250.png (Nahaufnahme Kroos Rücken)
+26 frame_001300.png (Nahaufnahme Gegner Kroos Rücken)
+27 frame_001350.png
+28 frame_001400.png
+30 frame_001500.png
+31 frame_001550.png (Nahaufnahme Ramos + Ball) (30)
+32 frame_001600.png
+34 frame_001700.png
+36 frame_001800.png
+41 frame_002050.png
+43 frame_002150.png
+44 frame_002200.png
+46 frame_002300.png
+49 frame_002450.png
+50 frame_002500.png (Nahaufnahme Ronaldo)
+52 frame_002600.png (40)
+55 frame_002750.png
+64 frame_003200.png
+65 frame_003250.png
+69 frame_003450.png
+71 frame_003550.png
+72 frame_003600.png
+80 frame_004000.png
+85 frame_004250.png
+86 frame_004300.png
+88 frame_004400.png (50)
+90 frame_004500.png
+91 frame_004550.png
+92 frame_004600.png
+93 frame_004650.png
+95 frame_004750.png
+98 frame_004900.png
+99 frame_004950.png
+
+101 frame_005050.png
+103 frame_005150.png
+105 frame_005250.png (60)
+106 frame_005300.png
+110 frame_005500.png
+111 frame_005550.png
+113 frame_005650.png
+115 frame_005750.png
+119 frame_005950.png
+123 frame_006150.png
+125 frame_006250.png
+126 frame_006300.png
+132 frame_006600.png (70)
+138 frame_006900.png
+142 frame_007100.png
+143 frame_007150.png
+144 frame_007200.png
+145 frame_007250.png
+147 frame_007350.png
+152 frame_007600.png
+153 frame_007650.png
+165 frame_008250.png
+167 frame_008350.png (80)
+168 frame_008400.png
+169 frame_008450.png
+171 frame_008550.png
+175 frame_008750.png
+176 frame_008800.png
+180 frame_009000.png
+185 frame_009250.png
+187 frame_009350.png
+188 frame_009400.png
+198 frame_009900.png (90)
+191 frame_009550.png
+195 frame_009750.png
+
+200 frame_010000.png
+204 frame_010200.png
+205 frame_010250.png
+208 frame_010400.png
+209 frame_010450.png
+232 frame_011600.png
+235 frame_011750.png
+237 h1_frame_011850.png (100)
+240 frame_012000.png
+244 h1_frame_012200.png
+245 frame_012250.png
+248 frame_012400.png
+250 h1_frame_012500.png
+253 h1_frame_012650.png
+254 frame_012700.png
+255 h1_frame_012750.png
+257 frame_012850.png
+261 h1_frame_013050.png (110)
+263 frame_013150.png
+266 frame_013300.png
+267 frame_013350.png
+272 frame_013600.png
+275 h1_frame_013750.png
+277 frame_013850.png
+283 frame_014150.png
+285 h1_frame_014250.png
+288 h1_frame_014400.png
+290 h1_frame_014500.png (120)
+292 h1_frame_014600.png
+298 frame_014900.png
+299 h1_frame_014950.png
+
+304 h1_frame_015200.png
+306 frame_015300.png
+309 frame_015450.png
+312 frame_015600.png
+316 h1_frame_015800.png
+318 frame_015900.png
+321 h1_frame_016050.png (130)
+326 h1_frame_016300.png
+327 frame_016350.png
+331 h1_frame_016550.png
+332 frame_016600.png
+337 frame_016850.png
+345 frame_017250.png
+348 frame_017400.png
+350 frame_017500.png
+355 frame_017750.png
+357 frame_017850.png (140)
+360 h1_frame_018000.png
+363 frame_018150.png
+365 h1_frame_018250.png
+366 frame_018300.png
+370 frame_018500.png
+372 h1_frame_018600.png
+374 h1_frame_018700.png
+376 frame_018800.png
+382 frame_019100.png
+386 frame_019300.png (150)
+388 h1_frame_019400.png
+391 h1_frame_019550.png
+394 h1_frame_019700.png
+398 h1_frame_019900.png
+
+402 frame_020100.png
+405 h1_frame_020250.png
+406 frame_020300.png
+408 h1_frame_020400.png
+413 frame_020650.png
+418 h1_frame_020900.png (160)
+420 frame_021000.png
+421 h1_frame_021050.png
+423 frame_021150.png
+424 h1_frame_021200.png
+425 frame_021250.png
+429 frame_021450.png
+432 frame_021600.png (Nahaufnahme Varane)
+433 frame_021650.png
+434 frame_021700.png
+447 frame_022350.png (170)
+448 frame_022400.png
+450 frame_022500.png
+454 frame_022700.png
+459 frame_022950.png
+460 frame_023000.png
+463 frame_023150.png
+474 frame_023700.png
+476 h1_frame_023800.png
+477 frame_023850.png
+478 frame_023900.png (180)
+480 frame_024000.png
+482 frame_024100.png
+484 frame_024200.png
+490 frame_024500.png
+496 frame_024800.png
+
+500 h1_frame_025000.png
+503 h1_frame_025150.png
+506 h1_frame_025300.png
+509 h1_frame_025450.png
+514 h1_frame_025700.png (190)
+517 h1_frame_025850.png
+519 h1_frame_025950.png
+521 frame_026050.png
+522 h1_frame_026100.png
+524 h1_frame_026200.png
+527 h1_frame_026350.png
+529 frame_026450.png
+531 h1_frame_026550.png
+534 h1_frame_026700.png
+536 h1_frame_026800.png (200)
+538 frame_026900.png
+540 h1_frame_027000.png
+544 frame_027200.png
+547 h1_frame_027350.png
+551 h1_frame_027550.png
+555 h1_frame_027750.png
+553 frame_027650.png
+563 frame_028150.png
+569 h1_frame_028450.png
+572 h1_frame_028600.png (210)
+577 frame_028850.png
+588 frame_029400.png
+591 h1_frame_029550.png
+595 h1_frame_029750.png
+
+606 h1_frame_030300.png
+619 h1_frame_030950.png
+620 frame_031000.png
+623 h1_frame_031150.png
+636 h1_frame_031800.png (220)
+646 h1_frame_032300.png
+650 frame_032500.png
+651 h1_frame_032550.png
+653 h1_frame_032650.png
+656 h1_frame_032800.png
+659 h1_frame_032950.png
+662 frame_033100.png
+663 h1_frame_033150.png
+667 frame_033350.png
+670 frame_033500.png (230)
+672 h1_frame_033600.png
+675 h1_frame_033750.png
+679 h1_frame_033950.png
+686 h1_frame_034300.png
+689 h1_frame_034450.png
+691 h1_frame_034550.png
+697 h1_frame_034850.png
+
+701 h1_frame_035050.png (Nahaufnahme Danilo)
+703 h1_frame_035150.png
+708 h1_frame_035400.png (240)
+712 h1_frame_035600.png
+713 h1_frame_035650.png
+717 h1_frame_035850.png
+719 h1_frame_035950.png
+724 h1_frame_036200.png
+729 h1_frame_036450.png
+733 h1_frame_036650.png
+739 h1_frame_036950.png
+742 h1_frame_037100.png
+750 frame_037500.png (250)
+751 h1_frame_037550.png
+755 h1_frame_037750.png
+759 h1_frame_037950.png
+760 frame_038000.png
+763 h1_frame_038150.png
+771 h1_frame_038550.png
+778 h1_frame_038900.png
+787 h1_frame_039350.png
+795 h1_frame_039750.png
+
+800 h1_frame_040000.png (260)
+803 h1_frame_040150.png
+806 h1_frame_040300.png
+809 h1_frame_040450.png
+815 h1_frame_040750.png
+819 h1_frame_040950.png
+822 h1_frame_041100.png
+827 h1_frame_041350.png
+835 h1_frame_041750.png
+838 h1_frame_041900.png
+840 frame_042000.png (270)
+842 h1_frame_042100.png
+849 frame_042450.png
+850 h1_frame_042500.png
+853 h1_frame_042650.png
+858 h1_frame_042900.png
+862 h1_frame_043100.png
+868 h1_frame_043400.png
+870 frame_043500.png
+875 h1_frame_043750.png
+883 h1_frame_044150.png (280)
+887 h1_frame_044350.png
+898 h1_frame_044900.png
+
+905 h1_frame_045250.png
+911 h1_frame_045550.png
+913 frame_045650.png
+917 h1_frame_045850.png
+921 h1_frame_046050.png
+922 h1_frame_046100.png
+927 h1_frame_046350.png
+932 h1_frame_046600.png
+935 h1_frame_046750.png (290)
+940 h1_frame_047000.png
+943 h1_frame_047150.png
+946 h1_frame_047300.png
+949 h1_frame_047450.png
+952 h1_frame_047600.png
+954 h1_frame_047700.png
+958 h1_frame_047900.png
+962 h1_frame_048100.png
+964 frame_048200.png
+967 h1_frame_048350.png (300)
+970 h1_frame_048500.png
+975 h1_frame_048750.png
+978 h1_frame_048900.png
+980 frame_049000.png
+984 h1_frame_049200.png
+987 h1_frame_049350.png
+990 h1_frame_049500.png
+993 h1_frame_049650.png
+994 h1_frame_049700.png
+997 h1_frame_049850.png (310)
+
+1000 frame_050000.png
+1003 h1_frame_050150.png
+1004 h1_frame_050200.png
+1007 h1_frame_050350.png
+1008 h1_frame_050400.png
+1012 h1_frame_050600.png
+1014 h1_frame_050700.png
+1020 h1_frame_051000.png
+1023 frame_051150.png
+1027 h1_frame_051350.png (320)
+1035 h1_frame_051750.png
+1040 frame_052000.png
+1044 h1_frame_052200.png
+1047 h1_frame_052350.png
+1053 frame_052650.png
+1054 h1_frame_052700.png
+1059 h1_frame_052950.png
+1066 h1_frame_053300.png
+1069 h1_frame_053450.png
+1072 h1_frame_053600.png (330)
+1076 h1_frame_053800.png
+1084 h1_frame_054200.png
+1088 h1_frame_054400.png
+1092 h1_frame_054600.png
+1096 h1_frame_054800.png
+1099 h1_frame_054950.png
+
+1102 h1_frame_055100.png
+1106 h1_frame_055300.png
+1115 h1_frame_055750.png
+1117 h1_frame_055850.png (340)
+1123 h1_frame_056150.png
+1126 h1_frame_056300.png
+1131 h1_frame_056550.png
+1138 h1_frame_056900.png
+1143 h1_frame_057150.png
+1149 h1_frame_057450.png
+1153 h1_frame_057650.png
+1158 frame_057900.png
+1159 frame_057950.png
+1162 h1_frame_058100.png (350)
+1164 h1_frame_058200.png
+1165 frame_058250.png
+1168 frame_058400.png
+1170 h1_frame_058500.png
+1171 frame_058550.png (Nur Zidane)
+1174 frame_058700.png
+1175 h1_frame_058750.png
+1177 h1_frame_058850.png
+1179 frame_058950.png
+1182 h1_frame_059100.png (360)
+1185 h1_frame_059250.png
+1187 h1_frame_059350.png
+1190 frame_059500.png
+1191 frame_059550.png
+1192 h1_frame_059600.png
+1194 h1_frame_059700.png
+1196 frame_059800.png
+1199 frame_059950.png 
+
+1204 frame_060200.png (Trainer Malaga)
+1207 frame_060350.png (370)
+1214 frame_060700.png
+1218 frame_060900.png
+1223 frame_061150.png
+1226 frame_061300.png
+1230 frame_061500.png
+1236 frame_061800.png
+1242 frame_062100.png
+1244 frame_062200.png 
+1247 frame_062350.png
+1248 frame_062400.png (Nahaufnahme) (380)
+1250 frame_062500.png
+1258 frame_062900.png
+1261 frame_063050.png
+1266 frame_063300.png
+1272 frame_063600.png
+1276 frame_063800.png
+1279 frame_063950.png
+1280 frame_064000.png
+1281 h1_frame_064050.png
+1283 frame_064150.png (390)
+1285 frame_064250.png
+1287 frame_064350.png
+1289 frame_064450.png (Nahaufnahme Benzema)
+1290 frame_064500.png (Nahaufnahme Ronaldo)
+1291 frame_064550.png (Nahaufnahme Ronaldo)
+1292 frame_064600.png
+1295 frame_064750.png
+1299 frame_064950.png
+
+1300 h1_frame_065000.png
+1302 h1_frame_065100.png (400)
+1304 frame_065200.png
+1305 frame_065250.png
+1307 h1_frame_065350.png
+1310 frame_065500.png
+1313 frame_065650.png
+1319 frame_065950.png
+1321 frame_066050.png 
+1323 frame_066150.png
+1330 frame_066500.png
+1338 frame_066900.png (410)
+1340 frame_067000.png
+
+
