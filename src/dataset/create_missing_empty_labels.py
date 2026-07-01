@@ -11,7 +11,7 @@ def run(images_dir, labels_dir):
 
     created = 0
 
-    for image_path in images_dir.glob("*.png"):
+    for image_path in images_dir.glob("*"):
 
         label_path = (
             labels_dir /

@@ -18,7 +18,6 @@ CLASS_NAMES = [
     "isco",
     "benzema",
     "ronaldo",
-    "ball",
 ]
 
 
