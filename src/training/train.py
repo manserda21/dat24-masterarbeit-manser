@@ -31,7 +31,7 @@ def parse_arguments():
     parser.add_argument(
         "--model",
         type=str,
-        default="yolo11s.pt",
+        default="yolo11m.pt",
         help="YOLO model"
     )
 
@@ -76,6 +76,13 @@ def parse_arguments():
         default=30,
         help="Early stopping patience"
     )
+    
+    parser.add_argument(
+        "--lr0",
+        type=float,
+        default=0.0005,
+        help="Initial learning rate"
+    )
 
     return parser.parse_args()
 
@@ -99,6 +106,7 @@ def main():
     print(f"\nImage size: {args.imgsz}")
     print(f"Batch size: {args.batch}")
     print(f"Epochs:     {args.epochs}")
+    print(f"Learning rate: {args.lr0}")
 
     print("\nLoading model...\n")
 
@@ -140,7 +148,7 @@ def main():
         # PERFORMANCE
         # -------------------------------------------------
         
-        cache=True,
+        cache="disk",
         amp=True,
         
         # -------------------------------------------------
@@ -148,6 +156,7 @@ def main():
         # -------------------------------------------------
 
         optimizer="AdamW",
+        lr0=args.lr0,
         patience=args.patience,
 
         # -------------------------------------------------
@@ -161,9 +170,13 @@ def main():
         # AUGMENTATION
         # -------------------------------------------------
 
-        degrees=3.0,
-        translate=0.05,
-        scale=0.4,
+        degrees=5.0,
+        translate=0.10,
+        scale=0.50,
+        
+        hsv_h=0.015,
+        hsv_s=0.7,
+        hsv_v=0.4,
 
         fliplr=0.5,
 
